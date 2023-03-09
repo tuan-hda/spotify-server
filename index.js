@@ -39,6 +39,8 @@ app.post("/login", async (req, res) => {
       secure: true,
       httpOnly: true,
       sameSite: "none",
+      expires: false,
+      maxAge: 365 * 24 * 60 * 60 * 1000,
     })
     res.status(200).json({ accessToken: access_token })
   } catch (err) {
@@ -64,7 +66,7 @@ app.post("/refresh", async (req, res) => {
     } = await spotifyApi.refreshAccessToken()
     res.status(200).json({ accessToken: access_token })
   } catch (error) {
-    console.log(err)
+    console.log(String(error))
     res.sendStatus(400)
   }
 })
