@@ -71,6 +71,21 @@ app.post("/refresh", async (req, res) => {
   }
 })
 
+function sleep(ms) {
+  return new Promise((resolve) => {
+    setTimeout(resolve, ms)
+  })
+}
+
+app.get("/test", async (req, res) => {
+  try {
+    await sleep(10000)
+    res.json([])
+  } catch (error) {
+    console.log(error)
+  }
+})
+
 app.get("/", (req, res) => {
   res.send("Hello from express server.")
 })
