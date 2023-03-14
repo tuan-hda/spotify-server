@@ -66,7 +66,8 @@ app.post("/refresh", async (req, res) => {
     } = await spotifyApi.refreshAccessToken()
     res.status(200).json({ accessToken: access_token })
   } catch (error) {
-    console.log(String(error))
+    console.log("REFRESH TOKEN ERROR", String(error))
+    res.clearCookie("refresh_token")
     res.sendStatus(400)
   }
 })
