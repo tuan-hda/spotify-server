@@ -9,7 +9,7 @@ import cookieParser from 'cookie-parser'
 const app = express()
 dotenv.config()
 
-const whitelist = ['https://localhost:5173']
+const whitelist = ['https://localhost:5173', 'https://spotify-zen.onrender.com']
 app.use(
   cors({
     credentials: true,
